@@ -52,7 +52,7 @@ Antes de começar, certifique-se de ter instalado:
 1. **Clone o repositório**
 
 ```bash
-git clone https://github.com/seu-usuario/water-meter.git
+git clone https://github.com/kayotimoteo/water-meter.git
 cd water-meter
 ```
 
@@ -240,8 +240,8 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para:
 
-- Abrir uma [issue](https://github.com/seu-usuario/water-meter/issues)
-- Enviar um [pull request](https://github.com/seu-usuario/water-meter/pulls)
+- Abrir uma [issue](https://github.com/kayotimoteo/water-meter/issues)
+- Enviar um [pull request](https://github.com/kayotimoteo/water-meter/pulls)
 
 ---
 
