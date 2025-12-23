@@ -246,3 +246,4 @@ Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para:
 ---
 
 Feito com 💧 e ❤️ para ajudar você a se manter hidratado!
+2025 - Kayo Timoteo
