@@ -15,7 +15,7 @@ O **Water Meter** é uma aplicação web desenvolvida para ajudar você a monito
 
 - 🎯 **Meta Diária**: Configure e acompanhe sua meta de consumo de água (padrão: 3000ml)
 - 📊 **Dashboard Visual**: Veja seu consumo do dia com uma barra de progresso animada
-- ⚡ **Registro Rápido**: Botões de acesso rápido para quantidades comuns (250ml, 500ml, 750ml, 1000ml)
+- ⚡ **Registro Rápido**: Botões de acesso rápido para quantidades comuns (250ml, 500ml, 710ml, 1000ml)
 - 🔢 **Quantidade Personalizada**: Digite qualquer quantidade em ml
 - 📅 **Histórico Completo**: Visualize todos os seus registros organizados por data
 - 🗑️ **Gerenciamento**: Delete registros individualmente quando necessário

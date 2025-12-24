@@ -17,7 +17,7 @@ const QUICK_AMOUNTS_STORAGE_KEY = "water-meter-quick-amounts";
 let idCounter = Date.now();
 
 const DEFAULT_GOAL = 3000;
-const DEFAULT_QUICK_AMOUNTS = [250, 500, 750, 1000];
+const DEFAULT_QUICK_AMOUNTS = [250, 500, 710, 1000];
 
 function getTodayDate(): string {
 	return new Date().toISOString().split("T")[0];
