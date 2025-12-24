@@ -1,5 +1,9 @@
 # 💧 Water Meter
 
+<div align="center">
+  <img src="./public/preview.png" alt="Water Meter Preview" width="230" />
+</div>
+
 Um aplicativo moderno e intuitivo para rastrear seu consumo diário de água. Mantenha-se hidratado de forma fácil e visual!
 
 ![Water Meter](https://img.shields.io/badge/Status-Active-success)
