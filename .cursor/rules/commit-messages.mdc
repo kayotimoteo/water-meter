@@ -1,0 +1,68 @@
+---
+description: Regra obrigatória para geração de mensagens de commit
+globs: 
+alwaysApply: true
+---
+
+# Regra de Commit Messages
+
+**OBRIGATÓRIO:** Ao gerar mensagens de commit, você DEVE seguir o padrão **Conventional Commits**.
+
+## Formato Obrigatório
+
+```
+<type>(<scope>): <description>
+```
+
+## Instruções
+
+1. Use SEMPRE o formato: `type: description` ou `type(scope): description`
+2. O `type` DEVE ser minúsculo
+3. A `description` DEVE começar com letra minúscula
+4. A `description` NÃO pode terminar com ponto final
+5. Máximo de 72 caracteres na primeira linha
+
+## Tipos Disponíveis
+
+- `feat` - nova funcionalidade
+- `fix` - correção de bug
+- `docs` - alterações na documentação
+- `style` - formatação (não afeta código)
+- `refactor` - refatoração (sem nova feature ou fix)
+- `perf` - melhoria de performance
+- `test` - adição ou correção de testes
+- `chore` - tarefas de manutenção (deps, configs, build)
+- `ci` - alterações em CI/CD
+- `build` - alterações no sistema de build
+- `revert` - reverter commit anterior
+
+## Exemplos de Mensagens Corretas
+
+```
+feat: adicionar validação de formulário
+fix(auth): corrigir token expirado não renovando
+docs: atualizar readme com instruções de instalação
+refactor(api): extrair lógica de paginação
+chore: atualizar dependências
+test(water): adicionar testes unitários para hook useWater
+perf: otimizar queries do banco de dados
+style: formatar arquivos com biome
+chore: configurar husky e commitlint
+```
+
+## NUNCA Gere Mensagens Assim
+
+- ❌ `Feat: Adicionar validação` (tipo maiúsculo, descrição maiúscula)
+- ❌ `fix corrigir bug` (falta dois-pontos)
+- ❌ `added new feature` (falta tipo)
+- ❌ `fix: Corrigir bug.` (descrição maiúscula, ponto final)
+- ❌ `Add new feature` (formato antigo sem tipo)
+- ❌ `Update file` (formato antigo sem tipo)
+
+## Breaking Changes
+
+Para mudanças que quebram compatibilidade, adicione `!` após o type:
+
+```
+feat!: remover suporte a API v1
+```

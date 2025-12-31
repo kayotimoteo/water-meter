@@ -29,7 +29,7 @@ function HistoryPage() {
 }
 
 function HistoryContent() {
-	const { getAllRecords, deleteRecord, isLoaded } = useWater();
+	const { records, deleteRecord, isLoaded } = useWater();
 	const [copied, setCopied] = useState(false);
 
 	if (!isLoaded) {
@@ -39,8 +39,6 @@ function HistoryContent() {
 			</div>
 		);
 	}
-
-	const records = getAllRecords();
 
 	const formatDate = (dateStr: string) => {
 		const date = new Date(dateStr);
@@ -172,7 +170,7 @@ function HistoryContent() {
 												</span>
 											</div>
 											<button
-												className="flex-shrink-0 rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-red-400/10 hover:text-red-400"
+												className="flex shrink-0 rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-red-400/10 hover:text-red-400"
 												onClick={() => deleteRecord(record.id)}
 												type="button"
 											>

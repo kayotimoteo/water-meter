@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Droplets, History, Plus, Settings, Trash2, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -63,13 +63,6 @@ function WaterContent() {
 	const [newGoal, setNewGoal] = useState("");
 	const [quickAmountDialogOpen, setQuickAmountDialogOpen] = useState(false);
 	const [newQuickAmount, setNewQuickAmount] = useState("");
-
-	// Atualiza o valor do campo quando o dialog da meta abrir
-	useEffect(() => {
-		if (goalDialogOpen) {
-			setNewGoal(goal.toString());
-		}
-	}, [goalDialogOpen, goal]);
 
 	if (!isLoaded) {
 		return (
@@ -160,7 +153,15 @@ function WaterContent() {
 					</div>
 					<div className="mt-1 flex items-center justify-center gap-2">
 						<p className="text-gray-500 text-xs sm:text-sm">Meta: {goal}ml</p>
-						<Dialog onOpenChange={setGoalDialogOpen} open={goalDialogOpen}>
+						<Dialog
+							onOpenChange={(open) => {
+								setGoalDialogOpen(open);
+								if (open) {
+									setNewGoal(goal.toString());
+								}
+							}}
+							open={goalDialogOpen}
+						>
 							<DialogTrigger asChild>
 								<button
 									className="rounded-lg p-1 text-gray-500 transition-colors hover:bg-slate-700 hover:text-cyan-400"

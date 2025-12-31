@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 
 const WaterIntakeSchema = z.object({
@@ -114,90 +114,65 @@ export function useWater() {
 	}, []);
 
 	const todayDate = getTodayDate();
-
 	const todayRecords = records.filter((r) => r.date === todayDate);
-
 	const todayTotal = todayRecords.reduce((sum, r) => sum + r.amount, 0);
 
-	const addWater = useCallback(
-		(amount: number) => {
-			if (amount <= 0) {
-				return;
-			}
-			const newRecord: WaterIntake = {
-				id: ++idCounter,
-				amount,
-				timestamp: Date.now(),
-				date: todayDate,
-			};
-			setRecords((prev) => {
-				const updated = [...prev, newRecord];
-				saveToStorage(updated);
-				return updated;
-			});
-		},
-		[todayDate]
-	);
+	const addWater = (amount: number) => {
+		if (amount <= 0) {
+			return;
+		}
+		const newRecord: WaterIntake = {
+			id: ++idCounter,
+			amount,
+			timestamp: Date.now(),
+			date: todayDate,
+		};
+		setRecords((prev) => {
+			const updated = [...prev, newRecord];
+			saveToStorage(updated);
+			return updated;
+		});
+	};
 
-	const deleteRecord = useCallback((id: number) => {
+	const deleteRecord = (id: number) => {
 		setRecords((prev) => {
 			const updated = prev.filter((r) => r.id !== id);
 			saveToStorage(updated);
 			return updated;
 		});
-	}, []);
+	};
 
-	const getAllRecords = useCallback(() => {
-		return records;
-	}, [records]);
-
-	const getTodayRecords = useCallback(() => {
-		return todayRecords;
-	}, [todayRecords]);
-
-	const getTodayTotal = useCallback(() => {
-		return todayTotal;
-	}, [todayTotal]);
-
-	const updateGoal = useCallback((newGoal: number) => {
+	const updateGoal = (newGoal: number) => {
 		if (newGoal > 0) {
 			setGoal(newGoal);
 			saveGoalToStorage(newGoal);
 		}
-	}, []);
+	};
 
-	const addQuickAmount = useCallback(
-		(amount: number) => {
-			if (amount > 0 && !quickAmounts.includes(amount)) {
-				const updated = [...quickAmounts, amount].sort((a, b) => a - b);
-				setQuickAmounts(updated);
-				saveQuickAmountsToStorage(updated);
-			}
-		},
-		[quickAmounts]
-	);
-
-	const removeQuickAmount = useCallback(
-		(amount: number) => {
-			const updated = quickAmounts.filter((a) => a !== amount);
+	const addQuickAmount = (amount: number) => {
+		if (amount > 0 && !quickAmounts.includes(amount)) {
+			const updated = [...quickAmounts, amount].sort((a, b) => a - b);
 			setQuickAmounts(updated);
 			saveQuickAmountsToStorage(updated);
-		},
-		[quickAmounts]
-	);
+		}
+	};
+
+	const removeQuickAmount = (amount: number) => {
+		const updated = quickAmounts.filter((a) => a !== amount);
+		setQuickAmounts(updated);
+		saveQuickAmountsToStorage(updated);
+	};
 
 	return {
-		addWater,
-		deleteRecord,
-		getAllRecords,
-		getTodayRecords,
-		getTodayTotal,
+		records,
 		todayRecords,
 		todayTotal,
 		isLoaded,
 		goal,
-		updateGoal,
 		quickAmounts,
+		addWater,
+		deleteRecord,
+		updateGoal,
 		addQuickAmount,
 		removeQuickAmount,
 	};
