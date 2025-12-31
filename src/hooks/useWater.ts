@@ -15,13 +15,25 @@ const STORAGE_KEY = "water-meter-records";
 const GOAL_STORAGE_KEY = "water-meter-goal";
 const QUICK_AMOUNTS_STORAGE_KEY = "water-meter-quick-amounts";
 
-let idCounter = Date.now();
+let idCounter = 0;
 
 const DEFAULT_GOAL = 3000;
 const DEFAULT_QUICK_AMOUNTS = [250, 500, 710, 1000];
 
 function getTodayDate(): string {
+	if (typeof window === "undefined") {
+		// Durante SSR, retorna uma data fixa para evitar diferenças
+		return dayjs().format("YYYY-MM-DD");
+	}
 	return dayjs().format("YYYY-MM-DD");
+}
+
+function getNextId(): number {
+	if (typeof window === "undefined") {
+		// Durante SSR, retorna um ID temporário
+		return Date.now();
+	}
+	return ++idCounter;
 }
 
 function loadFromStorage(): WaterIntake[] {
@@ -107,9 +119,17 @@ export function useWater() {
 	);
 
 	useEffect(() => {
-		setRecords(loadFromStorage());
+		const loadedRecords = loadFromStorage();
+		setRecords(loadedRecords);
 		setGoal(loadGoalFromStorage());
 		setQuickAmounts(loadQuickAmountsFromStorage());
+
+		// Inicializa o idCounter baseado no maior ID existente
+		if (loadedRecords.length > 0) {
+			const maxId = Math.max(...loadedRecords.map((r) => r.id));
+			idCounter = maxId;
+		}
+
 		setIsLoaded(true);
 	}, []);
 
@@ -122,7 +142,7 @@ export function useWater() {
 			return;
 		}
 		const newRecord: WaterIntake = {
-			id: ++idCounter,
+			id: getNextId(),
 			amount,
 			timestamp: Date.now(),
 			date: todayDate,

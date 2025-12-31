@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import dayjs from "dayjs";
+import "dayjs/locale/pt-br";
 import { Droplets, History, Plus, Settings, Trash2, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -95,10 +97,7 @@ function WaterContent() {
 	};
 
 	const formatTime = (timestamp: number) => {
-		return new Date(timestamp).toLocaleTimeString("pt-BR", {
-			hour: "2-digit",
-			minute: "2-digit",
-		});
+		return dayjs(timestamp).locale("pt-br").format("HH:mm");
 	};
 
 	const recentRecords = [...todayRecords].reverse().slice(0, 5);

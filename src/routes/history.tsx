@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import dayjs from "dayjs";
+import "dayjs/locale/pt-br";
 import { ArrowLeft, Check, Copy, Droplets, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useWater } from "@/hooks/useWater";
@@ -41,19 +43,11 @@ function HistoryContent() {
 	}
 
 	const formatDate = (dateStr: string) => {
-		const date = new Date(dateStr);
-		return date.toLocaleDateString("pt-BR", {
-			weekday: "long",
-			day: "2-digit",
-			month: "2-digit",
-		});
+		return dayjs(dateStr).locale("pt-br").format("dddd, DD/MM");
 	};
 
 	const formatTime = (timestamp: number) => {
-		return new Date(timestamp).toLocaleTimeString("pt-BR", {
-			hour: "2-digit",
-			minute: "2-digit",
-		});
+		return dayjs(timestamp).locale("pt-br").format("HH:mm");
 	};
 
 	const groupedByDate = records.reduce(
