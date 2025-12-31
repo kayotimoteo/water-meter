@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { useCallback, useEffect, useState } from "react";
 import { z } from "zod";
 
@@ -20,7 +21,7 @@ const DEFAULT_GOAL = 3000;
 const DEFAULT_QUICK_AMOUNTS = [250, 500, 710, 1000];
 
 function getTodayDate(): string {
-	return new Date().toISOString().split("T")[0];
+	return dayjs().format("YYYY-MM-DD");
 }
 
 function loadFromStorage(): WaterIntake[] {
