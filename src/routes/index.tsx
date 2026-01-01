@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { useWater } from "@/hooks/useWater";
+import { useWater } from "@/hooks/use-water";
 
 export const Route = createFileRoute("/")({
 	component: App,

@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import { ArrowLeft, Check, Copy, Droplets, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { useWater } from "@/hooks/useWater";
+import { useWater } from "@/hooks/use-water";
 
 export const Route = createFileRoute("/history")({
 	component: HistoryPage,

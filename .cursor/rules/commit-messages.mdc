@@ -20,7 +20,7 @@ alwaysApply: true
 2. O `type` DEVE ser minúsculo
 3. A `description` DEVE começar com letra minúscula
 4. A `description` NÃO pode terminar com ponto final
-5. Máximo de 72 caracteres na primeira linha
+5. Máximo de 100 caracteres, contando com o prefixo e demais, conte sempre todo o conteúdo.
 
 ## Tipos Disponíveis
 
